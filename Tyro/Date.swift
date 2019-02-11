@@ -75,7 +75,7 @@ public struct DateFormatJSONFormatter : JSONFormatterType {
                 return .Right(date)
             }
             else {
-                return .Left(.Custom("Could not format value (\(value)) to format (\(formatter.dateFormat))"))
+                return .Left(.Custom("Could not format value (\(value)) to format (\(String(describing: formatter.dateFormat)))"))
             }
         default:
             return .Left(.TypeMismatch("Date format", "\(type(of: value).self)"))

@@ -25,7 +25,7 @@ extension JSONValueConvertible {
     }
     
     public func value() -> [DecodedType]? {
-        return jsonValue?.array?.flatMap(self.decode) ?? nil
+        return jsonValue?.array?.compactMap(self.decode) ?? nil
     }
     
     public func value() -> [String : DecodedType]? {

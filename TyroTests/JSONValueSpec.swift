@@ -29,7 +29,7 @@ extension JSONValue : Arbitrary {
                     if b % 2 == 0  {
                         return Gen.pure(JSONValue.Object([:]))
                     }
-                    return DictionaryOf<Swift.String, JSONValue>.arbitrary.map { JSONValue.Object($0.getDictionary) }
+                    return Dictionary<Swift.String, JSONValue>.arbitrary.map { JSONValue.Object($0) }
                 }
             case 2:
                 return Swift.String.arbitrary.map(JSONValue.String)

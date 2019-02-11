@@ -14,7 +14,7 @@ public struct FromJSONArray<A, B : FromJSON>: FromJSON where B.T == A {
     public static func fromJSON(_ value : JSONValue) -> Either<JSONError, [A]> {
         switch value {
         case .Array(let values):
-            return values.flatMap(B.fromJSON).lift().either(onLeft: { .Left(.Array($0)) }, onRight: Either.Right)
+            return values.compactMap(B.fromJSON).lift().either(onLeft: { .Left(.Array($0)) }, onRight: Either.Right)
         default:
             return .Left(.TypeMismatch("\(JSONValue.Array.self)", "\(type(of: value))"))
         }
@@ -25,7 +25,7 @@ public struct ToJSONArray<A, B : ToJSON>: ToJSON where B.T == A {
     public typealias T = [A]
     
     public static func toJSON(_ value : T) -> Either<JSONError, JSONValue> {
-        return value.flatMap(B.toJSON).lift().either(onLeft: { .Left(.Array($0)) }, onRight: { .Right(.Array($0)) })
+        return value.compactMap(B.toJSON).lift().either(onLeft: { .Left(.Array($0)) }, onRight: { .Right(.Array($0)) })
     }
 }
 

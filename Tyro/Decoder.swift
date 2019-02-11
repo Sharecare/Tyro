@@ -23,7 +23,7 @@ public class JSONDecoder : JSONDecoderType {
         switch value {
         case .Array(let values):
             
-            return Either.Right( values.flatMap{ $0.anyObject } as AnyObject )
+            return Either.Right( values.compactMap{ $0.anyObject } as AnyObject )
         case .Object(let value):
             return .Right(value.mapMaybe{ $0.anyObject } as AnyObject)
         case .Number(let n):

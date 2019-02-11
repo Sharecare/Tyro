@@ -207,15 +207,15 @@ class TypesFromJSONSpec : XCTestCase {
         let json = "{\"pi\":\(floatPI)}"
         let pi: Float? = json.toJSON <? "pi"
         XCTAssertNotNil(pi)
-        XCTAssertEqualWithAccuracy(pi!, floatPI, accuracy: 1.0 / 1_000_000.0)
+        XCTAssertEqual(pi!, floatPI, accuracy: 1.0 / 1_000_000.0)
     }
     
     func testDouble() {
-        let doublePI: Double = M_PI
+        let doublePI: Double = .pi
         let json = "{\"pi\":\(doublePI)}"
         let pi: Double? = json.toJSON <? "pi"
         XCTAssertNotNil(pi)
-        XCTAssertEqualWithAccuracy(pi!, doublePI, accuracy: 1.0 / 1_000_000_000_000.0)
+        XCTAssertEqual(pi!, doublePI, accuracy: 1.0 / 1_000_000_000_000.0)
     }
     
     func testStringFromNumber() {

@@ -25,7 +25,7 @@ extension JSONEncoderType {
     
     public func encodeEither(_ value : [EncodedType]) -> Either<JSONError, JSONValue> {
         
-        return value.flatMap(self.encodeEither).lift().either(onLeft: { .Left(.Array($0)) }, onRight: { .Right(.Array($0)) })
+        return value.compactMap(self.encodeEither).lift().either(onLeft: { .Left(.Array($0)) }, onRight: { .Right(.Array($0)) })
     }
 
     public func encodeEither(_ value : [String : EncodedType]) -> Either<JSONError, JSONValue> {
@@ -85,7 +85,7 @@ extension JSONEncoderType {
     
     public static func encodeEither<A : ToJSON>(_ value : [A]) -> Either<JSONError, JSONValue> where A.T == A {
         
-        return value.flatMap(A.toJSON).lift().either(onLeft: { .Left(.Array($0)) }, onRight: { .Right(.Array($0)) })
+        return value.compactMap(A.toJSON).lift().either(onLeft: { .Left(.Array($0)) }, onRight: { .Right(.Array($0)) })
     }
     
     public static func encodeEither<A : ToJSON>(_ value : [Swift.String : A]) -> Either<JSONError, JSONValue> where A.T == A {

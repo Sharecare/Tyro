@@ -32,10 +32,10 @@ extension Array where Element : EitherType {
         let (lefties, righties) = splitFor { $0.left != nil }
         
         if lefties.count > 0 {
-            return .Left(lefties.flatMap { $0.left })
+            return .Left(lefties.compactMap { $0.left })
         }
         else {
-            let r = righties.flatMap { $0.right }
+            let r = righties.compactMap { $0.right }
             return .Right(r)
         }
     }
@@ -66,7 +66,7 @@ extension Dictionary where Value : EitherType {
         let (lefties, righties) = keyValuePairs().splitFor { $1.left != nil }
         
         if lefties.count > 0 {
-            return .Left(lefties.flatMap { $0.1.left })
+            return .Left(lefties.compactMap { $0.1.left })
         }
         else {
             return .Right(righties.mapAssociate { $0 }.mapMaybe { $0.right })
