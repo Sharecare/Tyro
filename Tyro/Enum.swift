@@ -17,7 +17,7 @@ extension FromJSON where Self : RawRepresentable, Self.RawValue == Int {
             let x : T? = self.init(rawValue : n) as? T
             return x.toEither(.Custom("Raw value could not be converted"))
         default:
-            return .Left(.TypeMismatch("\(JSONValue.Number.self)","\(value.self)"))
+            return .Left(.TypeMismatch("\(String(describing: JSONValue.Number.self))","\(value.self)"))
         }
     }
 }
@@ -37,7 +37,7 @@ extension FromJSON where Self : RawRepresentable, Self.RawValue == String {
             let x : T? = self.init(rawValue : s) as? T
             return x.toEither(.Custom("Raw value could not be converted"))
         default:
-            return .Left(.TypeMismatch("\(JSONValue.Number.self)","\(value.self)"))
+            return .Left(.TypeMismatch("\(String(describing: JSONValue.Number.self))","\(value.self)"))
         }
     }
 }

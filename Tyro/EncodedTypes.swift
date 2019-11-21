@@ -16,7 +16,7 @@ public struct FromJSONArray<A, B : FromJSON>: FromJSON where B.T == A {
         case .Array(let values):
             return values.compactMap(B.fromJSON).lift().either(onLeft: { .Left(.Array($0)) }, onRight: Either.Right)
         default:
-            return .Left(.TypeMismatch("\(JSONValue.Array.self)", "\(type(of: value))"))
+            return .Left(.TypeMismatch("\(String(describing: JSONValue.Array.self))", "\(type(of: value))"))
         }
     }
 }
@@ -36,7 +36,7 @@ public struct FromJSONDictionary<A, B : FromJSON>: FromJSON where B.T == A {
         case .Object(let value):
             return value.mapMaybe(B.fromJSON).lift().either(onLeft: { .Left(.Array($0)) }, onRight: Either.Right)
         default:
-            return .Left(.TypeMismatch("\(JSONValue.Object.self)", "\(type(of: value).self)"))
+            return .Left(.TypeMismatch("\(String(describing: JSONValue.Object.self))", "\(type(of: value).self)"))
         }
     }
 }
