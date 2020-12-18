@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode11.2
+osx_image: xcode12.3
 git:
   submodules: false
 before_install:
@@ -11,7 +11,7 @@ script:
   - set -o pipefail
   - xcodebuild test -scheme Tyro -configuration Debug | xcpretty -c
   - xcodebuild clean -scheme Tyro -configuration Debug
-  - xcodebuild test -scheme Tyro-iOS -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 8" -UseModernBuildSystem=NO | xcpretty -c
+  - xcodebuild test -scheme Tyro-iOS -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 11" -UseModernBuildSystem=NO | xcpretty -c
   - xcodebuild clean -scheme Tyro-iOS -configuration Debug -sdk iphonesimulator
   - xcodebuild test -scheme Tyro-tvOS -destination 'platform=tvOS Simulator,name=Apple TV' -UseModernBuildSystem=NO | xcpretty -c
   - xcodebuild clean -scheme Tyro-tvOS
