@@ -9,7 +9,7 @@ let package = Package(
     products: [
         .library(
             name: "Tyro",
-            targets: ["Tyro"])
+            targets: ["Tyro-iOS"])
     ],
     dependencies: [
         .package(url: "https://github.com/typelift/Swiftz.git", from: "0.0.0"),
