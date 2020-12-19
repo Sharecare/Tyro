@@ -351,6 +351,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1ACAE93B258E98D000DC30D3 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		823739721CC99B1400CBAF3C /* Tyro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Tyro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8237397B1CC99B1500CBAF3C /* Tyro-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tyro-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		826B84781C017B8900E2F01C /* JSONValueSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONValueSpec.swift; sourceTree = "<group>"; };
@@ -482,6 +483,7 @@
 		DE702CC61BFAC6820017CEE8 = {
 			isa = PBXGroup;
 			children = (
+				1ACAE93B258E98D000DC30D3 /* Package.swift */,
 				DEB7BD2E1BFE9E1B0051C2C0 /* Cartfile */,
 				DEB7BD2F1BFE9E1B0051C2C0 /* Cartfile.private */,
 				DEB7BD301BFE9E1B0051C2C0 /* LICENSE */,
