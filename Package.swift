@@ -18,7 +18,8 @@ let package = Package(
     targets: [
         .target(
             name: "Tyro-iOS",
-            path: "Tyro"
+            path: "Tyro",
+            dependencies: ["Swiftz"]
         )
     ]
 )
